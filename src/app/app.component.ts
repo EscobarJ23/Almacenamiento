@@ -18,8 +18,8 @@ export class AppComponent {
   })
   title = 'Almacenamiento';
   tabla = [];
+  bandera = false;
   async setObject() {
-    const { keys } = await Storage.keys();
     const { Id, Nombre, Apellido, Edad } = this.datos.value
     await Storage.set({
       key: Id,
@@ -32,6 +32,7 @@ export class AppComponent {
     this.getObject();
   }
   async getObject() {
+    this.bandera=true;
     this.tabla=[];
     const { keys } = await Storage.keys();
     keys.forEach(async (element)=>{
@@ -40,28 +41,8 @@ export class AppComponent {
     });
   }
 
-  async setItem() {
-    await Storage.set({
-      key: 'name',
-      value: 'xd'
-    });
-  }
-
-  async getItem() {
-    const { value } = await Storage.get({ key: 'name' });
-    console.log('Got item: ', value);
-  }
-
-  async removeItem() {
-    await Storage.remove({ key: 'name' });
-  }
-
-  async keys() {
-    const { keys } = await Storage.keys();
-    console.log('Got keys: ', keys);
-  }
-
-  async clear() {
+  async clean(){
     await Storage.clear();
   }
+
 }

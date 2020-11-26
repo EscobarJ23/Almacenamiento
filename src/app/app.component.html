@@ -327,10 +327,10 @@
     <br>
     <input formControlName="Edad" placeholder="Edad">
     <br>
-    <button type="submit" style="margin: auto;">Buscar</button>
+    <button type="submit" style="margin: auto;">Ingresar</button>
   </form>
 
-  <table>
+  <table *ngIf="bandera">
     <thead>
       <tr>
         <th>Id</th>
